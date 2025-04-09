@@ -1,0 +1,280 @@
+/**
+ * GuitarMuse AI - Songbook Styles
+ * Specific styles for the songbook feature
+ */
+
+/* ---------- Print Styles for Tab Sheets ---------- */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    
+    .tab-sheet, .tab-sheet * {
+        visibility: visible;
+    }
+    
+    .tab-sheet {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+    }
+    
+    .chord-diagram {
+        font-family: monospace;
+        white-space: pre;
+    }
+}
+
+/* ---------- Tab Sheet Styling ---------- */
+.tab-sheet {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 30px;
+    line-height: 1.6;
+}
+
+.tab-sheet h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.tab-metadata {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+
+.tab-metadata p {
+    margin: 5px 0;
+}
+
+.tab-notes {
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    font-style: italic;
+}
+
+.chord-diagrams {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.chord-container {
+    text-align: center;
+    width: 150px;
+}
+
+.chord-name {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.chord-diagram {
+    font-family: monospace;
+    white-space: pre;
+    line-height: 1.2;
+    padding: 10px;
+    border-radius: 5px;
+    display: inline-block;
+    font-size: 14px;
+}
+
+.progression-sequence {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.progression-sequence h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.sequence {
+    font-size: 24px;
+    padding: 15px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.footer {
+    text-align: center;
+    font-size: 12px;
+    margin-top: 50px;
+    padding-top: 20px;
+}
+
+/* ---------- Export Options ---------- */
+.export-options {
+    margin-top: 20px;
+}
+
+.format-option {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.format-option input[type="radio"] {
+    width: auto;
+}
+
+.format-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.format-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ---------- Songbook Cards ---------- */
+.songbook-card {
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.songbook-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.card-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.card-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.card-content {
+    margin-bottom: 15px;
+}
+
+.card-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+.card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.card-tag {
+    padding: 3px 8px;
+    border-radius: 15px;
+    font-size: 12px;
+}
+
+/* ---------- Empty State ---------- */
+.empty-state {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.empty-state-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+.empty-state-message {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.empty-state-action {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* ---------- Confirmation Dialog ---------- */
+.confirm-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.confirm-message {
+    margin-bottom: 20px;
+}
+
+.confirm-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.confirm-button, .cancel-button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    width: auto;
+}
+
+.theme-dark .songbook-card {
+    background-color: var(--light-color);
+}
+
+.theme-dark .card-tag {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.theme-dark .empty-state-action {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.theme-dark .confirm-dialog {
+    background-color: var(--panel-color);
+}
+
+.theme-dark .confirm-button {
+    background-color: var(--error-color);
+    color: white;
+}
+
+.theme-dark .cancel-button {
+    background-color: var(--light-color);
+    color: var(--text-color);
+}

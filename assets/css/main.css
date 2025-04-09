@@ -1,0 +1,656 @@
+/**
+ * GuitarMuse AI - Main CSS Styles
+ * Core layout and component styling
+ */
+
+/* ---------- Base Styles ---------- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ---------- Header & Navigation ---------- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    margin-bottom: 30px;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.logo span {
+    font-style: italic;
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+}
+
+.tab-button {
+    padding: 10px 20px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+.tab-button.active {
+    font-weight: bold;
+}
+
+/* ---------- Tab Content ---------- */
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+/* ---------- Main Layout ---------- */
+.main-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 30px;
+}
+
+@media (max-width: 900px) {
+    .main-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+.control-panel, .visualization-panel {
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* ---------- Form Elements ---------- */
+.section-title {
+    font-size: 20px;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+select, input, textarea, button {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 1px solid;
+    font-size: 16px;
+}
+
+select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 8.825L1.175 4 2.025 3.15 6 7.125 9.975 3.15 10.825 4z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    padding-right: 40px;
+}
+
+button {
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.text-input {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* ---------- Artist Input with Suggestions ---------- */
+.artist-input-container {
+    position: relative;
+}
+
+.suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    border-radius: 0 0 5px 5px;
+    z-index: 10;
+    max-height: 150px;
+    overflow-y: auto;
+    display: none;
+}
+
+.suggestion-item {
+    padding: 8px 15px;
+    cursor: pointer;
+}
+
+/* ---------- Slider ---------- */
+.slider-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.slider-label {
+    width: 120px;
+    flex-shrink: 0;
+}
+
+.slider {
+    flex-grow: 1;
+    height: 20px;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+    border-radius: 10px;
+    margin: 0 15px;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.slider-value {
+    width: 30px;
+    text-align: center;
+}
+
+.complexity-description {
+    font-size: 14px;
+    font-style: italic;
+    margin-top: 5px;
+    margin-left: 120px;
+}
+
+/* ---------- Chord Progression ---------- */
+.progression-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.playback-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.save-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.save-controls input {
+    width: 200px;
+}
+
+.save-button {
+    white-space: nowrap;
+}
+
+.control-button {
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-weight: bold;
+    white-space: nowrap;
+    width: auto;
+}
+
+.tempo-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tempo-slider {
+    width: 100px;
+}
+
+.chord-progression {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.chord-card {
+    border-radius: 8px;
+    padding: 15px;
+    min-width: 150px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.chord-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.chord-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.chord-diagram {
+    font-family: monospace;
+    white-space: pre;
+    line-height: 1.2;
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 5px;
+    display: inline-block;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.chord-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.play-button {
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* ---------- Chat ---------- */
+.chat-container {
+    margin-top: 30px;
+    padding-top: 20px;
+}
+
+.chat-messages {
+    border-radius: 5px;
+    height: 200px;
+    overflow-y: auto;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.message {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.user-message {
+    text-align: right;
+}
+
+.chat-input {
+    display: flex;
+    gap: 10px;
+}
+
+.chat-input input {
+    flex-grow: 1;
+}
+
+.chat-input button {
+    flex-shrink: 0;
+    width: auto;
+}
+
+.typing-indicator {
+    font-style: italic;
+    opacity: 0.7;
+}
+
+/* ---------- Tooltip ---------- */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    margin-left: 5px;
+    cursor: help;
+}
+
+.tooltip-icon {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 18px;
+    font-size: 12px;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    width: 200px;
+    text-align: center;
+    border-radius: 5px;
+    padding: 8px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 14px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* ---------- Songbook Layout ---------- */
+.songbook-layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 30px;
+}
+
+@media (max-width: 900px) {
+    .songbook-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+.songbook-sidebar {
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.songbook-main {
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.search-box {
+    margin-bottom: 20px;
+}
+
+.progression-list {
+    overflow-y: auto;
+    max-height: 500px;
+}
+
+.progression-item {
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.progression-item:hover {
+    transform: translateX(5px);
+}
+
+.progression-item.active {
+    font-weight: bold;
+}
+
+.prog-name {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.prog-details, .prog-date {
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+.no-items {
+    padding: 20px;
+    text-align: center;
+    font-style: italic;
+}
+
+/* ---------- Progression Detail ---------- */
+.progression-header {
+    margin-bottom: 20px;
+}
+
+.progression-header h2 {
+    margin-bottom: 5px;
+}
+
+.progression-metadata {
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.progression-metadata span {
+    margin-right: 15px;
+}
+
+.progression-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tag {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+.add-tag-button {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    background: none;
+    border: 1px dashed;
+    width: auto;
+}
+
+.progression-notes {
+    margin-bottom: 20px;
+}
+
+.progression-notes textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 14px;
+    resize: vertical;
+}
+
+.chord-display {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.progression-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.action-button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    width: auto;
+}
+
+/* ---------- Modal ---------- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6);
+}
+
+.modal-content {
+    margin: 5% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 800px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.tab-preview {
+    padding: 20px;
+    margin: 20px 0;
+    max-height: 500px;
+    overflow-y: auto;
+    border-radius: 5px;
+}
+
+.export-options {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.export-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    width: auto;
+}
+
+/* ---------- Tab Sheet ---------- */
+.tab-sheet {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.tab-sheet h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.tab-metadata {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.tab-notes {
+    margin-bottom: 30px;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.chord-diagrams {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.chord-container {
+    text-align: center;
+}
+
+.progression-sequence {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.sequence {
+    font-size: 24px;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.footer {
+    text-align: center;
+    font-size: 12px;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid;
+}
+
+/* ---------- Easter Egg ---------- */
+.easter-egg {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    font-size: 12px;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+}
+
+.easter-egg:hover {
+    opacity: 1;
+}

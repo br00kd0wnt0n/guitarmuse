@@ -1,0 +1,217 @@
+/**
+ * GuitarMuse AI - Theme Styles
+ * Dark theme styling for the application
+ */
+
+/* ---------- Dark Theme ---------- */
+.theme-dark {
+    --primary-color: #7b68ee;
+    --secondary-color: #6c757d;
+    --background-color: #121212;
+    --panel-color: #1e1e1e;
+    --accent-color: #ff7043;
+    --text-color: #e0e0e0;
+    --light-color: #2c2c2c;
+    --dark-color: #0a0a0a;
+    --highlight-color: #3a506b;
+    --highlight-text: #ffffff;
+    --error-color: #ff5252;
+    --success-color: #4caf50;
+    
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+/* Base elements */
+.theme-dark .control-panel,
+.theme-dark .visualization-panel,
+.theme-dark .songbook-sidebar,
+.theme-dark .songbook-main {
+    background-color: var(--panel-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.theme-dark .section-title {
+    color: var(--primary-color);
+    border-bottom-color: var(--light-color);
+}
+
+/* Form elements */
+.theme-dark select,
+.theme-dark input,
+.theme-dark textarea {
+    background-color: var(--dark-color);
+    color: var(--text-color);
+    border-color: var(--light-color);
+}
+
+.theme-dark select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23e0e0e0' d='M6 8.825L1.175 4 2.025 3.15 6 7.125 9.975 3.15 10.825 4z'/%3E%3C/svg%3E");
+}
+
+.theme-dark button {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.theme-dark button:hover {
+    background-color: #634bd1;
+}
+
+/* Sliders */
+.theme-dark .slider {
+    background: var(--light-color);
+}
+
+.theme-dark .slider::-webkit-slider-thumb {
+    background: var(--accent-color);
+}
+
+/* Chord cards */
+.theme-dark .chord-card {
+    background-color: var(--light-color);
+}
+
+.theme-dark .chord-name {
+    color: var(--primary-color);
+}
+
+.theme-dark .chord-diagram {
+    background-color: var(--dark-color);
+}
+
+.theme-dark .play-button {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.theme-dark .play-button:hover {
+    background-color: #e5673a;
+}
+
+/* Chat */
+.theme-dark .chat-messages {
+    background-color: var(--dark-color);
+    border: 1px solid var(--light-color);
+}
+
+.theme-dark .user-message {
+    background-color: var(--light-color);
+}
+
+.theme-dark .ai-message {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Tooltips */
+.theme-dark .tooltip-icon {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.theme-dark .tooltip-text {
+    background-color: var(--dark-color);
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Songbook items */
+.theme-dark .progression-item {
+    background-color: var(--light-color);
+}
+
+.theme-dark .progression-item:hover {
+    background-color: var(--highlight-color);
+}
+
+.theme-dark .progression-item.active {
+    background-color: var(--highlight-color);
+    color: var(--highlight-text);
+}
+
+/* Tags */
+.theme-dark .tag {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.theme-dark .add-tag-button {
+    color: var(--text-color);
+    border-color: var(--light-color);
+}
+
+/* Modal */
+.theme-dark .modal-content {
+    background-color: var(--panel-color);
+}
+
+.theme-dark .tab-preview {
+    background-color: var(--light-color);
+}
+
+.theme-dark .export-button {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.theme-dark .tab-notes {
+    background-color: var(--dark-color);
+}
+
+.theme-dark .sequence {
+    background-color: var(--dark-color);
+}
+
+/* Tab buttons */
+.theme-dark .tab-button {
+    background-color: var(--light-color);
+    color: var(--text-color);
+}
+
+.theme-dark .tab-button:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.theme-dark .tab-button.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Action buttons */
+.theme-dark .action-button {
+    background-color: var(--light-color);
+    color: var(--text-color);
+}
+
+.theme-dark .action-button:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.theme-dark .save-button {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.theme-dark .save-button:hover {
+    background-color: #e5673a;
+}
+
+/* Easter egg */
+.theme-dark .easter-egg {
+    color: var(--secondary-color);
+}
+
+/* Suggestions */
+.theme-dark .suggestions {
+    background-color: var(--dark-color);
+    border: 1px solid var(--light-color);
+}
+
+.theme-dark .suggestion-item:hover {
+    background-color: var(--light-color);
+}
+
+/* Light Theme can be added here in the future */

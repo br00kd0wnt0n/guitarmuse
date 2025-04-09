@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuitarMuse AI - Intelligent Chord Progression Generator</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/themes.css">
+    <link rel="stylesheet" href="assets/css/songbook.css">
+</head>
+<body class="theme-dark">
+    <div class="container">
+        <header>
+            <div class="logo">Guitar<span>Muse</span> AI</div>
+            <nav class="main-nav">
+                <ul>
+                    <li><button class="tab-button active" data-tab="scratchpad">Progression Scratchpad</button></li>
+                    <li><button class="tab-button" data-tab="songbook">Your Songbook</button></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <!-- Tab Content -->
+        <div class="tab-content">
+            <!-- Progression Scratchpad Tab -->
+            <div id="scratchpad" class="tab-pane active">
+                <div class="main-layout">
+                    <div class="control-panel">
+                        <div class="section-title">Chord Progression Generator</div>
+                        
+                        <div class="input-group">
+                            <label for="genre">Genre
+                                <span class="tooltip">
+                                    <span class="tooltip-icon">?</span>
+                                    <span class="tooltip-text">Select a musical genre to guide the chord progression style</span>
+                                </span>
+                            </label>
+                            <select id="genre">
+                                <option value="rock">Rock</option>
+                                <option value="blues">Blues</option>
+                                <option value="jazz">Jazz</option>
+                                <option value="pop">Pop</option>
+                                <option value="folk">Folk</option>
+                                <option value="country">Country</option>
+                                <option value="metal">Metal</option>
+                                <option value="classical">Classical</option>
+                                <option value="latin">Latin</option>
+                                <option value="funk">Funk</option>
+                                <option value="reggae">Reggae</option>
+                                <option value="prog">Progressive Rock</option>
+                            </select>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="vibe">Vibe/Mood
+                                <span class="tooltip">
+                                    <span class="tooltip-icon">?</span>
+                                    <span class="tooltip-text">Set the emotional character of the progression</span>
+                                </span>
+                            </label>
+                            <select id="vibe">
+                                <option value="happy">Happy</option>
+                                <option value="sad">Sad</option>
+                                <option value="energetic">Energetic</option>
+                                <option value="relaxed">Relaxed</option>
+                                <option value="intense">Intense</option>
+                                <option value="mysterious">Mysterious</option>
+                                <option value="romantic">Romantic</option>
+                                <option value="epic">Epic</option>
+                                <option value="melancholic">Melancholic</option>
+                                <option value="nostalgic">Nostalgic</option>
+                                <option value="dark">Dark</option>
+                            </select>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="artist-input">Similar to Artist
+                                <span class="tooltip">
+                                    <span class="tooltip-icon">?</span>
+                                    <span class="tooltip-text">Type any artist or select from suggestions</span>
+                                </span>
+                            </label>
+                            <div class="artist-input-container">
+                                <input type="text" id="artist-input" class="artist-input" placeholder="Enter an artist name...">
+                                <div class="suggestions" id="artist-suggestions">
+                                    <div class="suggestion-item">The Beatles</div>
+                                    <div class="suggestion-item">Led Zeppelin</div>
+                                    <div class="suggestion-item">Pink Floyd</div>
+                                    <div class="suggestion-item">Jimi Hendrix</div>
+                                    <div class="suggestion-item">Bob Dylan</div>
+                                    <div class="suggestion-item">Radiohead</div>
+                                    <div class="suggestion-item">John Mayer</div>
+                                    <div class="suggestion-item">Taylor Swift</div>
+                                    <div class="suggestion-item">Ed Sheeran</div>
+                                    <div class="suggestion-item">Stevie Ray Vaughan</div>
+                                    <div class="suggestion-item">Metallica</div>
+                                    <div class="suggestion-item">Nirvana</div>
+                                    <div class="suggestion-item">Jimi Hendrix</div>
+                                    <div class="suggestion-item">Yngwie Malmsteen</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="section-title">Complexity Adjustments
+                            <span class="tooltip">
+                                <span class="tooltip-icon">?</span>
+                                <span class="tooltip-text">Use these sliders to adjust different aspects of your chord progression</span>
+                            </span>
+                        </div>
+                        
+                        <div class="slider-container">
+                            <div class="slider-label">Chord Complexity</div>
+                            <input type="range" min="1" max="11" value="5" class="slider" id="chord-complexity">
+                            <div class="slider-value">5</div>
+                        </div>
+                        <div class="complexity-description" id="complexity-description">
+                            "The Nashville Number System" - Standard chord progressions with a touch of color
+                        </div>
+                        
+                        <div class="slider-container">
+                            <div class="slider-label">Progression Length</div>
+                            <input type="range" min="2" max="8" value="4" class="slider" id="progression-length">
+                            <div class="slider-value">4</div>
+                        </div>
+                        
+                        <div class="slider-container">
+                            <div class="slider-label">Key Center</div>
+                            <input type="range" min="1" max="12" value="1" class="slider" id="key-center">
+                            <div class="slider-value">A</div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="text-input">Custom Instructions
+                                <span class="tooltip">
+                                    <span class="tooltip-icon">?</span>
+                                    <span class="tooltip-text">Add specific requests like "make it more bluesy" or "add a surprise chord"</span>
+                                </span>
+                            </label>
+                            <textarea id="text-input" class="text-input" placeholder="E.g., 'Make this more like Led Zeppelin' or 'Give me a chord that will make my audience weep'"></textarea>
+                        </div>
+                        
+                        <button id="generate-button">Generate Chord Progression</button>
+                    </div>
+                    
+                    <div class="visualization-panel">
+                        <div class="section-title">Your Chord Progression</div>
+                        
+                        <div class="progression-controls">
+                            <div class="playback-controls">
+                                <button class="control-button" id="play-all">▶ Play All</button>
+                                <button class="control-button" id="play-arpeggio">♫ Play Notes</button>
+                                <div class="tempo-control">
+                                    <label for="tempo">Tempo:</label>
+                                    <input type="range" min="60" max="180" value="120" class="slider tempo-slider" id="tempo">
+                                    <span id="tempo-value">120 BPM</span>
+                                </div>
+                            </div>
+                            <div class="save-controls">
+                                <input type="text" id="progression-name" placeholder="Progression Name">
+                                <button class="control-button save-button" id="save-progression">Save to Songbook</button>
+                            </div>
+                        </div>
+                        
+                        <div class="chord-progression" id="chord-progression">
+                            <!-- Example chord cards - these would be generated dynamically -->
+                            <div class="chord-card">
+                                <div class="chord-name">G</div>
+                                <div class="chord-diagram">E|--3--|\nB|--0--|\nG|--0--|\nD|--0--|\nA|--2--|\nE|--3--|</div>
+                                <div class="chord-controls">
+                                    <button class="play-button">▶</button>
+                                    <button class="play-button">♫</button>
+                                </div>
+                            </div>
+                            
+                            <div class="chord-card">
+                                <div class="chord-name">Em</div>
+                                <div class="chord-diagram">E|--0--|\nB|--0--|\nG|--0--|\nD|--2--|\nA|--2--|\nE|--0--|</div>
+                                <div class="chord-controls">
+                                    <button class="play-button">▶</button>
+                                    <button class="play-button">♫</button>
+                                </div>
+                            </div>
+                            
+                            <div class="chord-card">
+                                <div class="chord-name">C</div>
+                                <div class="chord-diagram">E|--0--|\nB|--1--|\nG|--0--|\nD|--2--|\nA|--3--|\nE|--X--|</div>
+                                <div class="chord-controls">
+                                    <button class="play-button">▶</button>
+                                    <button class="play-button">♫</button>
+                                </div>
+                            </div>
+                            
+                            <div class="chord-card">
+                                <div class="chord-name">D</div>
+                                <div class="chord-diagram">E|--2--|\nB|--3--|\nG|--2--|\nD|--0--|\nA|--X--|\nE|--X--|</div>
+                                <div class="chord-controls">
+                                    <button class="play-button">▶</button>
+                                    <button class="play-button">♫</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="chat-container">
+                            <div class="section-title">Chat with GuitarMuse AI</div>
+                            <div class="chat-messages" id="chat-messages">
+                                <div class="message ai-message">
+                                    Hey there, fellow axe-wielder! I'm GuitarMuse AI. Ready to craft some killer chord progressions that would make your guitar heroes proud. What kind of vibe are you going for today?
+                                </div>
+                            </div>
+                            <div class="chat-input">
+                                <input type="text" id="chat-input" placeholder="Ask me about chord progressions...">
+                                <button id="send-button">Send</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Songbook Tab -->
+            <div id="songbook" class="tab-pane">
+                <div class="songbook-layout">
+                    <div class="songbook-sidebar">
+                        <div class="section-title">Your Saved Progressions</div>
+                        <div class="search-box">
+                            <input type="text" id="songbook-search" placeholder="Search your songbook...">
+                        </div>
+                        <div class="progression-list" id="progression-list">
+                            <!-- This will be populated with saved progressions -->
+                            <div class="progression-item">
+                                <div class="prog-name">Dreamy Jazz Progression</div>
+                                <div class="prog-details">Key: Cmaj | BPM: 95</div>
+                                <div class="prog-date">April 6, 2025</div>
+                            </div>
+                            <div class="progression-item active">
+                                <div class="prog-name">Blues Rock Jam</div>
+                                <div class="prog-details">Key: A | BPM: 120</div>
+                                <div class="prog-date">April 5, 2025</div>
+                            </div>
+                            <div class="progression-item">
+                                <div class="prog-name">Acoustic Ballad</div>
+                                <div class="prog-details">Key: G | BPM: 75</div>
+                                <div class="prog-date">April 1, 2025</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="songbook-main">
+                        <div class="progression-detail">
+                            <div class="progression-header">
+                                <h2 id="detail-title">Blues Rock Jam</h2>
+                                <div class="progression-metadata">
+                                    <span>Key: A</span>
+                                    <span>BPM: 120</span>
+                                    <span>Created: April 5, 2025</span>
+                                </div>
+                            </div>
+                            
+                            <div class="progression-tags">
+                                <span class="tag">Blues</span>
+                                <span class="tag">Rock</span>
+                                <span class="tag">SRV Style</span>
+                                <button class="add-tag-button">+ Add Tag</button>
+                            </div>
+                            
+                            <div class="progression-notes">
+                                <textarea id="progression-notes" placeholder="Add notes about this progression...">This progression has a strong Stevie Ray Vaughan influence. Works great for blues soloing practice. Try it with a slight shuffle feel.</textarea>
+                            </div>
+                            
+                            <div class="chord-display" id="detail-chord-display">
+                                <!-- Chord cards go here -->
+                                <div class="chord-card">
+                                    <div class="chord-name">A7</div>
+                                    <div class="chord-diagram">E|--0--|\nB|--2--|\nG|--0--|\nD|--2--|\nA|--0--|\nE|--X--|</div>
+                                    <div class="chord-controls">
+                                        <button class="play-button">▶</button>
+                                        <button class="play-button">♫</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="chord-card">
+                                    <div class="chord-name">D9</div>
+                                    <div class="chord-diagram">E|--2--|\nB|--1--|\nG|--2--|\nD|--0--|\nA|--X--|\nE|--X--|</div>
+                                    <div class="chord-controls">
+                                        <button class="play-button">▶</button>
+                                        <button class="play-button">♫</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="chord-card">
+                                    <div class="chord-name">E7</div>
+                                    <div class="chord-diagram">E|--0--|\nB|--0--|\nG|--1--|\nD|--0--|\nA|--2--|\nE|--0--|</div>
+                                    <div class="chord-controls">
+                                        <button class="play-button">▶</button>
+                                        <button class="play-button">♫</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="chord-card">
+                                    <div class="chord-name">A7</div>
+                                    <div class="chord-diagram">E|--0--|\nB|--2--|\nG|--0--|\nD|--2--|\nA|--0--|\nE|--X--|</div>
+                                    <div class="chord-controls">
+                                        <button class="play-button">▶</button>
+                                        <button class="play-button">♫</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="progression-actions">
+                                <button class="action-button" id="edit-progression">Edit</button>
+                                <button class="action-button" id="play-progression">Play</button>
+                                <button class="action-button" id="export-tab">Export Tab Sheet</button>
+                                <button class="action-button" id="delete-progression">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Export Tab Sheet Modal -->
+    <div class="modal" id="export-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Export Tab Sheet</h2>
+            <div class="tab-preview" id="tab-preview">
+                <!-- Tab sheet preview goes here -->
+            </div>
+            <div class="export-options">
+                <button class="export-button" data-format="pdf">Export as PDF</button>
+                <button class="export-button" data-format="png">Export as Image</button>
+                <button class="export-button" data-format="print">Print</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="easter-egg" id="easter-egg">These go to eleven...</div>
+
+    <!-- Load JavaScript modules -->
+    <script type="module" src="assets/js/app.js"></script>
+</body>
+</html>
