@@ -25,10 +25,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const openAIService = new OpenAIService();
     const chordGenerator = new ChordGenerator(openAIService);
     
-
  @param {UIController} uiController - The UI controller instance
  
-
 function setupEventListeners(uiController) {
     // Progression generator controls
     document.getElementById('generate-button').addEventListener('click', () => {
