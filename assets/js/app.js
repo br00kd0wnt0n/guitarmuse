@@ -11,6 +11,9 @@ import SongbookManager from './songbook-manager.js';
 import OpenAIService from './openai-service.js';
 import UIController from './ui-controller.js';
 import ChordGenerator from './chord-generator.js';
+import config from './config.js';
+
+openAIService.setApiKey(config.openAIKey);
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
