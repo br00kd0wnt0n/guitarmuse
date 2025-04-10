@@ -38,14 +38,42 @@ function initializeServices(apiKey) {
     const openAIService = new OpenAIService(apiKey);
     const chordGenerator = new ChordGenerator(openAIService);
     
-    // Initialize UI controller
-    const uiController = new UIController(audioEngine, songbookManager, chordGenerator);
+    // Initialize UI controller with references to services
+    const uiController = new UIController(
+        audioEngine,
+        songbookManager,
+        chordGenerator
+    );
     
-    // Set up event listeners
+    // Set up tab navigation
+    setupTabNavigation();
+    
+    // Setup event listeners for the main UI components
     setupEventListeners(uiController);
     
     // Initialize other components
     initializeComponents(uiController, songbookManager, openAIService);
+}
+
+/**
+ * Set up the tab navigation system
+ */
+function setupTabNavigation() {
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabPanes = document.querySelectorAll('.tab-pane');
+    
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons and panes
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabPanes.forEach(pane => pane.classList.remove('active'));
+            
+            // Add active class to clicked button and corresponding pane
+            button.classList.add('active');
+            const tabId = button.getAttribute('data-tab');
+            document.getElementById(tabId).classList.add('active');
+        });
+    });
 }
 
 /**
@@ -300,7 +328,7 @@ function initializeComponents(uiController, songbookManager, openAIService) {
         openAIService.setApiKey(apiKey);
     } else {
         // Prompt for API key or use mockedAI
-        uiController.useMockedAI(true);
+        uiController.setMockedAI(true);
     }
 }
 
@@ -346,23 +374,10 @@ function setupArtistInputSuggestions() {
     });
 }
 
-/**
- * Set up the tab navigation system
- */
-function setupTabNavigation() {
-    const tabButtons = document.querySelectorAll('.tab-button');
-    const tabPanes = document.querySelectorAll('.tab-pane');
-    
-    tabButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Remove active class from all buttons and panes
-            tabButtons.forEach(btn => btn.classList.remove('active'));
-            tabPanes.forEach(pane => pane.classList.remove('active'));
-            
-            // Add active class to clicked button and corresponding pane
-            button.classList.add('active');
-            const tabId = button.getAttribute('data-tab');
-            document.getElementById(tabId).classList.add('active');
-        });
-    });
-}
+// Export any necessary functions for testing
+export {
+    setupTabNavigation,
+    setupEventListeners,
+    setupComplexitySliders,
+    setupSongbookInteractions
+};
