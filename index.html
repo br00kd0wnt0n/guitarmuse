@@ -138,6 +138,16 @@
                             </label>
                             <textarea id="text-input" class="text-input" placeholder="E.g., 'Make this more like Led Zeppelin' or 'Give me a chord that will make my audience weep'"></textarea>
                         </div>
+
+                        <div class="input-group">
+                            <label for="api-key">OpenAI API Key
+                                <span class="tooltip">
+                                    <span class="tooltip-icon">?</span>
+                                    <span class="tooltip-text">Your OpenAI API key is required to generate chord progressions</span>
+                                </span>
+                            </label>
+                            <input type="password" id="api-key" class="api-key-input" placeholder="Enter your OpenAI API key...">
+                        </div>
                         
                         <button id="generate-button">Generate Chord Progression</button>
                     </div>
@@ -338,5 +348,10 @@
 
     <!-- Load JavaScript modules -->
     <script type="module" src="assets/js/app.js"></script>
+    <script type="module" src="assets/js/audio-engine.js"></script>
+    <script type="module" src="assets/js/songbook-manager.js"></script>
+    <script type="module" src="assets/js/openai-service.js"></script>
+    <script type="module" src="assets/js/ui-controller.js"></script>
+    <script type="module" src="assets/js/chord-generator.js"></script>
 </body>
 </html>

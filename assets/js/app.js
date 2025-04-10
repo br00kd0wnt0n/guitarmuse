@@ -16,13 +16,40 @@ import ChordGenerator from './chord-generator.js';
 document.addEventListener('DOMContentLoaded', function() {
     console.log('GuitarMuse AI - Starting up...');
     
+    // Get stored API key or prompt for it
+    let apiKey = localStorage.getItem('openai_api_key');
+    if (!apiKey) {
+        const apiKeyInput = document.getElementById('api-key');
+        apiKeyInput.addEventListener('change', (e) => {
+            apiKey = e.target.value;
+            localStorage.setItem('openai_api_key', apiKey);
+            initializeServices(apiKey);
+        });
+    } else {
+        document.getElementById('api-key').value = apiKey;
+        initializeServices(apiKey);
+    }
+});
+
+function initializeServices(apiKey) {
     // Initialize services
     const audioEngine = new AudioEngine();
     const songbookManager = new SongbookManager();
-    const openAIService = new OpenAIService();
+    const openAIService = new OpenAIService(apiKey);
     const chordGenerator = new ChordGenerator(openAIService);
     
     // Initialize UI controller
+    const uiController = new UIController(audioEngine, songbookManager, chordGenerator);
+    
+    // Set up event listeners
+    setupEventListeners(uiController);
+    
+    // Initialize other components
+    initializeComponents(uiController, songbookManager, openAIService);
+}
+
+/**
+ * Set up event listeners for the main UI components
  * @param {UIController} uiController - The UI controller instance
  */
 function setupEventListeners(uiController) {
@@ -319,29 +346,6 @@ function setupArtistInputSuggestions() {
     });
 }
 
-// Export any necessary functions for testing
-export {
-    setupTabNavigation,
-    setupEventListeners,
-    setupComplexitySliders,
-    setupSongbookInteractions
-}; with references to services
-    const uiController = new UIController(
-        audioEngine,
-        songbookManager,
-        chordGenerator
-    );
-    
-    // Set up tab navigation
-    setupTabNavigation();
-    
-    // Setup event listeners for the main UI components
-    setupEventListeners(uiController);
-    
-    // Run any component initialization
-    initializeComponents(uiController, songbookManager, openAIService);
-});
-
 /**
  * Set up the tab navigation system
  */
@@ -362,7 +366,3 @@ function setupTabNavigation() {
         });
     });
 }
-
-/**
- * Set up event listeners for the main UI components
- * @param {UIController} uiController - The
